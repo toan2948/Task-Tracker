@@ -1,9 +1,9 @@
 import React, { useState, useEffect} from 'react'
 import './App.css';
-import AddTask from './brad/AddTask';
-import Button from './brad/Button';
-import Header from "./brad/Header.js";
-import Task from './brad/Task';
+import AddTask from './components/AddTask';
+import Button from './components/Button';
+import Header from "./components/Header.js";
+import Task from './components/Task';
 
 
 function App() {
