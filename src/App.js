@@ -12,85 +12,52 @@ function App() {
   const showAddTask = () => {
     setshowTask(!showTask)
   }
-//   const [tasks, settasks] = useState([
-//     {
-//         id: 1,
-//         text: 'Goto Meeting',
-//         date: 'Feb 18th 2020',
-//         reminder: true
-//     },
-//     {
-//         id: 2,
-//         text: 'Üben in Park',
-//         date: 'Feb 23th 2020',
-//         reminder: true
-//     },
-//     {
-//         id: 3,
-//         text: 'read Fa',
-//         date: 'jeden Tag',
-//         reminder: true
-//     }
-// ])
+  const [tasks, settasks] = useState([
+    {
+        id: 1,
+        text: 'Goto Meeting',
+        date: 'Feb 18th 2020',
+        reminder: true
+    },
+    {
+        id: 2,
+        text: 'Üben in Park',
+        date: 'Feb 23th 2020',
+        reminder: true
+    },
+    {
+        id: 3,
+        text: 'read Fa',
+        date: 'jeden Tag',
+        reminder: true
+    }
+])
 
-const [tasks, settasks] = useState([])
-useEffect(() => {
-  const getTasks = async () => {
-      const tasksfromserver = await fetchTask()
-      settasks(tasksfromserver)
-  }
-  getTasks()
-}, [])
 
-const fetchTask = async () => {
-  const res = await fetch('http://localhost:3000/tasks')
-  const data = await res.json()
-  return data
-}
-// const deleteTask = (id) => {
-//   settasks(tasks.filter(task => task.id !== id))
-// }
 
-const deleteTask = async(id) => {
-  await fetch(`http://localhost:3000/tasks/${id}`,{
-    method: 'DELETE'
-  })
+
+const deleteTask = (id) => {
   settasks(tasks.filter(task => task.id !== id))
 }
+
+
 
 const toggleReminder = (id) => {
   settasks(tasks.map(task => task.id ===id ? {...task, reminder: !task.reminder} : task))
 }
 
-// const addTask = (text, date, reminder)=>{
-//   const newTask = {
-//     id: Math.random() *10,
-//     text,
-//     date,
-//     reminder
-//   }
-//   settasks([...tasks, newTask])
-// }
-
-
-const addTask = async (text, date, reminder)=>{
+const addTask = (text, date, reminder)=>{
   const newTask = {
-    // id: Math.random() *10, id will be created automatically from the json-server
+    id: Math.random() *10,
     text,
     date,
     reminder
   }
-  const res = await fetch('http://localhost:3000/tasks',{
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(newTask),
-  })
-  const data = await res.json()
-
-  settasks([...tasks, data])
+  settasks([...tasks, newTask])
 }
+
+
+
   return (
     <div className="container">
      <Header name ={name} />

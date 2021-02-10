@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from './Button'
 
 const Header = ({name}) => {
     const header_name = 'toan header'
@@ -10,10 +9,7 @@ const Header = ({name}) => {
   
     return (
         <div className="header">
-            <h1 style = {{ color: 'red' }}>{name}</h1>
-            {/* <h2 style ={headingStyle}>{header_name}</h2>
-            <h2>{tit}</h2> */}
-            
+            <h1 style = {{ color: 'red' }}>{name}</h1>            
         </div>
     )
     Header.defaultProps = {
